@@ -8,11 +8,11 @@ import com.microservice.beerservice.web.model.BeerDto;
 import com.microservice.beerservice.web.model.BeerStyleEnum;
 import com.microservice.beerservice.web.model.BeerPagedList;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
