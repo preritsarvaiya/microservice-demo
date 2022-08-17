@@ -14,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class BeerEvent implements Serializable {
 
-    static final long serialVersionUID = -5781515597148163111L;
+    static final long serialVersionUID = -1056375585090257569L;
 
     private BeerDto beerDto;
 }
