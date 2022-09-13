@@ -2,7 +2,7 @@ package com.microservice.microserviceorder.services;
 
 import com.microservice.microserviceorder.domain.BeerOrder;
 import com.microservice.microserviceorder.domain.Customer;
-import com.microservice.microserviceorder.domain.OrderStatusEnum;
+import com.microservice.microserviceorder.domain.BeerOrderStatusEnum;
 import com.microservice.microserviceorder.repositories.BeerOrderRepository;
 import com.microservice.microserviceorder.repositories.CustomerRepository;
 import com.microservice.microserviceorder.web.mappers.BeerOrderMapper;
@@ -63,20 +63,17 @@ public class BeerOrderServiceImpl implements BeerOrderService {
     public BeerOrderDto placeOrder(UUID customerId, BeerOrderDto beerOrderDto) {
         Optional<Customer> customerOptional = customerRepository.findById(customerId);
 
-            if (customerOptional.isPresent()) {
-                BeerOrder beerOrder = beerOrderMapper.dtoToBeerOrder(beerOrderDto);
-                beerOrder.setId(null); //should not be set by outside client
+        if (customerOptional.isPresent()) {
+            BeerOrder beerOrder = beerOrderMapper.dtoToBeerOrder(beerOrderDto);
+            beerOrder.setId(null); //should not be set by outside client
             beerOrder.setCustomer(customerOptional.get());
-            beerOrder.setOrderStatus(OrderStatusEnum.NEW);
+            beerOrder.setOrderStatus(BeerOrderStatusEnum.NEW);
 
             beerOrder.getBeerOrderLines().forEach(line -> line.setBeerOrder(beerOrder));
 
             BeerOrder savedBeerOrder = beerOrderRepository.saveAndFlush(beerOrder);
 
             log.debug("Saved Beer Order: " + beerOrder.getId());
-
-            //todo impl
-            //  publisher.publishEvent(new NewBeerOrderEvent(savedBeerOrder));
 
             return beerOrderMapper.beerOrderToDto(savedBeerOrder);
         }
@@ -92,7 +89,7 @@ public class BeerOrderServiceImpl implements BeerOrderService {
     @Override
     public void pickupOrder(UUID customerId, UUID orderId) {
         BeerOrder beerOrder = getOrder(customerId, orderId);
-        beerOrder.setOrderStatus(OrderStatusEnum.PICKED_UP);
+        beerOrder.setOrderStatus(BeerOrderStatusEnum.PICKED_UP);
 
         beerOrderRepository.save(beerOrder);
     }

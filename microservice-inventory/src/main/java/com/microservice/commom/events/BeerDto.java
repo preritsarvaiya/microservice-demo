@@ -1,4 +1,4 @@
-package com.microservice.beerservice.web.model;
+package com.microservice.commom.events;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -41,7 +41,7 @@ public class BeerDto implements Serializable {
     private String beerName;
 
     @NotNull
-    private BeerStyleEnum beerStyle;
+    private String beerStyle;
 
     @NotNull
     private String upc;

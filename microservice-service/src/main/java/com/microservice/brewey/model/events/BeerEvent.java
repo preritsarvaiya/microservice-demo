@@ -1,6 +1,6 @@
-package com.microservice.beerservice.web.model.event;
+package com.microservice.brewey.model.events;
 
-import com.microservice.beerservice.web.model.BeerDto;
+import com.microservice.brewey.model.BeerDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

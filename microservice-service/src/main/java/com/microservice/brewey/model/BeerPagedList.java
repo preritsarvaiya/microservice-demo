@@ -1,4 +1,4 @@
-package com.microservice.beerservice.web.model;
+package com.microservice.brewey.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

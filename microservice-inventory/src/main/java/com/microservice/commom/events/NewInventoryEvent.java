@@ -1,6 +1,5 @@
-package com.microservice.beerservice.web.model.event;
+package com.microservice.commom.events;
 
-import com.microservice.beerservice.web.model.BeerDto;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor

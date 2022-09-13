@@ -5,7 +5,7 @@ import com.microservice.beerservice.domain.Beer;
 import com.microservice.beerservice.repositories.BeerRepository;
 import com.microservice.beerservice.services.inventory.BeerInventoryService;
 import com.microservice.beerservice.web.mapper.BeerMapper;
-import com.microservice.beerservice.web.model.event.BrewBeerEvent;
+import com.microservice.brewey.model.events.BrewBeerEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;

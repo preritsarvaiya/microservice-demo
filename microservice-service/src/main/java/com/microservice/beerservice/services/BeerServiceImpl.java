@@ -4,9 +4,9 @@ import com.microservice.beerservice.domain.Beer;
 import com.microservice.beerservice.repositories.BeerRepository;
 import com.microservice.beerservice.web.controller.NotFoundException;
 import com.microservice.beerservice.web.mapper.BeerMapper;
-import com.microservice.beerservice.web.model.BeerDto;
-import com.microservice.beerservice.web.model.BeerStyleEnum;
-import com.microservice.beerservice.web.model.BeerPagedList;
+import com.microservice.brewey.model.BeerDto;
+import com.microservice.brewey.model.BeerStyleEnum;
+import com.microservice.brewey.model.BeerPagedList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -23,7 +23,7 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
-    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
+        @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
         if (showInventoryOnHand) {
